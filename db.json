@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "name": "test",
+      "price": "20",
+      "type": "PC",
+      "brand": "Asus",
+      "id": 1
+    },
+    {
+      "name": "test",
+      "price": "403",
+      "type": "PC",
+      "brand": "HP",
+      "id": 2
+    },
+    {
+      "name": "test",
+      "price": "57",
+      "type": "PC",
+      "brand": "HP",
+      "id": 3
+    },
+    {
+      "name": "testing",
+      "price": "566",
+      "type": "MAC",
+      "brand": "APPLE",
+      "id": 4
+    }
+  ]
+}
