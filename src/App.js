@@ -37,47 +37,42 @@ function App() {
     );
     
   };
-
   const filterData = (data) => {
     const filteredData = [];
-
-    if (!filters.name) {
+  
+    if (!filters) {
       return data;
     }
-
     for (const item of data) {
-
       if (filters.name !== "" && item.name !== filters.name) {
         continue;
       }
-      
       if (filters.price !== 0 && item.price > filters.price) {
         continue;
-      }
-      
+      }      
       if (filters.type !== "" && item.type !== filters.type) {
         continue;
-      }
-      
+      }      
       if (filters.brand !== "" && item.brand !== filters.brand) {
         continue;
       }
       filteredData.push(item);
     }
-    return [filteredData];
+    return filteredData;
   };
 
   return (
     <div className="container">
-            <div className = "row mt-3">
-      <ItemsDisplay items={filterData(data["items"])} />
+      <div className="row mt-3">
+        <ItemsDisplay items={filterData(data["items"])} />
       </div>
 
-      <div className = "row mt-3">
-        <SearchBar updateSearchParams={updateFilters} /> {/*For the childcomponent SearchBar to update the parent by callback */}
+      <div className="row mt-3">
+        <SearchBar updateSearchParams={updateFilters} />
+        {/*For the childcomponent SearchBar to update the parent by callback */}
       </div>
 
-      <div className = "row mt-3">
+      <div className="row mt-3">
         <AddItem addItem={addItemToData} />
       </div>
     </div>

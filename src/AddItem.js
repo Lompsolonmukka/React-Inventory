@@ -36,7 +36,7 @@ function AddItem(props) {
           type="number"
           className="form-control"
           value={price}
-          onChange={(e) => setPrice(e.target.value)}
+          onChange={(e) => setPrice(e.target.valueAsNumber)}
         />
         <label htmlFor="type-field">Type:</label>
         <input

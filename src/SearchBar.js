@@ -40,7 +40,7 @@ function SearchBar(props) {
             type="number"
             className="form-control"
             value={price}
-            onChange={(e) => setPrice(e.target.value)}
+            onChange={(e) => setPrice(e.target.valueAsNumber)}
           />
         </div>
 
@@ -69,13 +69,13 @@ function SearchBar(props) {
 
       <div className="row mt-3">
         <div className="col-5" />
-          <button
-            type="button"
-            className="btn btn-secondary col-2"
-            onClick={searchButtonPressed}
-          >
-            Search
-          </button>
+        <button
+          type="button"
+          className="btn btn-secondary col-2"
+          onClick={searchButtonPressed}
+        >
+          Search
+        </button>
       </div>
     </div>
   );
