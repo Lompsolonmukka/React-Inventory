@@ -4,35 +4,36 @@ import AddItem from "./AddItem";
 import { useEffect, useState } from "react";
 import ItemsDisplay from "./ItemsDisplay";
 
+
 function App() {
   const [filters, setFilters] = useState({});
-  const [data, setData] = useState({ items: [] });
+  const [data, setData] = useState({ services: [] });
 
   useEffect(() => {
-    fetch("http://localhost:3000/items")
+    fetch("http://localhost:3000/services")
       .then((response) => response.json())
-      .then((data) => setData({ items: data }));
+      .then((data) => setData({ services: data }));
   }, []);
 
   const updateFilters = (searchParams) => {
     setFilters(searchParams);
   };
 
-  const addItemToData = (item) => {
-    let items = data["items"];
+  const addItemToData = (service) => {
+    let services = data["services"];
     
     const requestOptions = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(item)
+      body: JSON.stringify(service)
     };
-    fetch("http://localhost:3000/items", requestOptions)
+    fetch("http://localhost:3000/services", requestOptions)
       .then((response) => response.json())
       .then((data) => {
-        items.push(data);
-        setData({ items: items });
+        services.push(data);
+        setData({ services: services });
       }
     );
     
@@ -43,28 +44,26 @@ function App() {
     if (!filters) {
       return data;
     }
-    for (const item of data) {
-      if (filters.name !== "" && item.name !== filters.name) {
+    for (const service of data) {
+      if (filters.serviceId !== "" && service.serviceId !== filters.serviceId) {
         continue;
-      }
-      if (filters.price !== 0 && item.price > filters.price) {
+      }/*
+      if (filters.serviceStatus !== "" && service.serviceStatus !== filters.serviceStatus) {
         continue;
-      }      
-      if (filters.type !== "" && item.type !== filters.type) {
-        continue;
-      }      
-      if (filters.brand !== "" && item.brand !== filters.brand) {
-        continue;
-      }
-      filteredData.push(item);
+      }*/
+
+      console.log(filters);
+      console.log(typeof serviceStatus);
+      filteredData.push(service);
     }
+    console.log(filteredData);
     return filteredData;
   };
 
   return (
     <div className="container">
       <div className="row mt-3">
-        <ItemsDisplay items={filterData(data["items"])} />
+        <ItemsDisplay services={filterData(data["services"])} />
       </div>
 
       <div className="row mt-3">
@@ -72,9 +71,9 @@ function App() {
         {/*For the childcomponent SearchBar to update the parent by callback */}
       </div>
 
-      <div className="row mt-3">
+      {/*<div className="row mt-3">
         <AddItem addItem={addItemToData} />
-      </div>
+  </div>*/}
     </div>
   );
 }

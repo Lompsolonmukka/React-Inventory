@@ -1,68 +1,60 @@
 import { useState } from "react";
+import Select from "react-select";
 
 function SearchBar(props) {
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
-  const [type, setType] = useState("");
-  const [brand, setBrand] = useState("");
+  const [serviceId, setServiceId] = useState("");
+  const [customerId, setCustomerId] = useState("");
+  const [serviceStatus, setServiceStatus] = useState("");
+  
 
   const searchButtonPressed = () => {
     props.updateSearchParams({
-      name: name,
-      price: price,
-      type: type,
-      brand: brand,
+      serviceId: serviceId,
+      customerId: customerId,
+      serviceStatus: serviceStatus,
+      
     });
   };
+
+  const statuses = ["NEW", "ACTIVE", "MODIFIED"];
+
 
   return (
     <div className="container">
       <div className="row">
-        <h2>Search for an item</h2>
+        <h2>Search for service</h2>
       </div>
 
       <div className="row">
         <div className="col">
-          <label htmlFor="name-field">Name:</label>
+          <label htmlFor="serviceId-field">ServiceId:</label>
           <input
-            id="name-field"
+            id="serviceId-field"
             type="text"
             className="form-control"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={serviceId}
+            onChange={(e) => setServiceId(e.target.value)}
           />
         </div>
 
         <div className="col">
-          <label htmlFor="price-field">Max Price:</label>
+          <label htmlFor="customerId-field">CustomerId:</label>
           <input
-            id="price-field"
-            type="number"
+            id="customerId-field"
+            type="text"
             className="form-control"
-            value={price}
-            onChange={(e) => setPrice(e.target.valueAsNumber)}
+            value={customerId}
+            onChange={(e) => setCustomerId(e.target.value)}
           />
         </div>
 
         <div className="col">
-          <label htmlFor="type-field">Type:</label>
-          <input
-            id="type-field"
-            type="text"
-            className="form-control"
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-          />
-        </div>
-
-        <div className="col">
-          <label htmlFor="brand-field">Brand:</label>
-          <input
-            id="brand-field"
-            type="text"
-            className="form-control"
-            value={brand}
-            onChange={(e) => setBrand(e.target.value)}
+          <label htmlFor="serviceStatus-field">ServiceStatus:</label>
+          <Select
+            id="serviceStatus-field"
+            options={statuses.map((opt) => ({ label: opt, value: opt }))}
+            value={serviceStatus}
+            onChange={setServiceStatus}
           />
         </div>
       </div>

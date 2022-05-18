@@ -1,16 +1,20 @@
-First touch to a React build.
+Variation of the database handling
 
 Done:
 
-o Database JSON
-o Adding item function
-o Search function
+- Database JSON
+- Show partly all items in JSON
+- search with full ID
+- search bar dropdown list for statuses
 
 
-In the future:
+To-do:
 
-o error handling
-o app UI design
-o possibly ways to print the returned search array to a spreadsheet etc.
-o deleting item from the database
-o table list page system and scrolling
+- search with status
+- automatic ID generation for the JSON objects
+- filter function optimizing
+- ahow full item details with click
+- error handling
+- app UI design
+- possibly ways to print the returned search array to a spreadsheet etc.
+- deleting item from the database

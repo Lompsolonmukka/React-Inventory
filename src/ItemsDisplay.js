@@ -1,13 +1,13 @@
 function ItemsDisplay(props) {
 
-    const showItem = (item) => {
+    const showItem = (service) => {
         return (
           <tr>
-            <th scope="row">{item.id}</th>
-            <td>{item.name}</td>
-            <td>{item.price}</td>
-            <td>{item.type}</td>
-            <td>{item.brand}</td>
+            <th scope="row">{service.serviceId}</th>
+            
+            <td>{service.customerId}</td>
+            <td>{service.serviceStatus}</td>
+            
           </tr>
         );
     };
@@ -15,20 +15,20 @@ function ItemsDisplay(props) {
   return (
     <div className="container">
       <div className="row">
-        <h2>Items</h2>
+        <h2>Services</h2>
       </div>
       <div className="row">
         <table className="table table-striped">
           <thead>
             <tr>
-              <th scope="col">Id</th>
-              <th scope="col">Name</th>
-              <th scope="col">Price</th>
-              <th scope="col">Type</th>
-              <th scope="col">Brand</th>
+              
+              <th scope="col">ServiceId</th>
+              <th scope="col">CustomerId</th>
+              <th scope="col">ServiceStatus</th>
+              
             </tr>
           </thead>
-          <tbody>{props.items.map(showItem)}</tbody>
+          <tbody>{props.services.map(showItem)}</tbody>
         </table>
       </div>
     </div>
